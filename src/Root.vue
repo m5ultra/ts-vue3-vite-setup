@@ -3,9 +3,8 @@
 </script>
 
 <template>
-<h2>根组建</h2>
+  <h2>根组建</h2>
+  <router-view />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
