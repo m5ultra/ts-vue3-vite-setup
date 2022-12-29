@@ -1,0 +1,57 @@
+// @ts-ignore
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        'Feat',
+        'Fix',
+        'Docs',
+        'Style',
+        'Refactor',
+        'Perf',
+        'Test',
+        'Build',
+        'Ci',
+        'Chore',
+        'Revert',
+      ],
+    ],
+    'type-case': [0, 'always', ['lower-case']],
+    'type-empty': [2, 'never'],
+    'scope-empty': [0, 'never'],
+    'scope-case': [
+      2,
+      'always',
+      [
+        'lower-case',
+        'upper-case',
+        'camel-case',
+        'kebab-case',
+        'pascal-case',
+        'sentence-case',
+        'snake-case',
+        'start-case',
+      ],
+    ],
+    'subject-case': [
+      0,
+      'always',
+      [
+        'lower-case',
+        'upper-case',
+        'camel-case',
+        'kebab-case',
+        'pascal-case',
+        'sentence-case',
+        'snake-case',
+        'start-case',
+      ],
+    ],
+    'subject-empty': [2, 'never'],
+    'subject-full-stop': [2, 'never'],
+    'header-max-length': [2, 'always', 72],
+  },
+}

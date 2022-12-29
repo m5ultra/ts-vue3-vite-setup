@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo husky hooks is work
+#安装commitLint后 node_modules bin目录下 会自动生成一个commitlint的可执行命令
+
+npx commitlint --edit
