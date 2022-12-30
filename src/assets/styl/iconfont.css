@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('../images/iconfont.ttf?t=1672394040641') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-plus:before {
+  content: "\e829";
+}
+
+.icon-vue:before {
+  content: "\e69a";
+}
+
+.icon-typescript:before {
+  content: "\ecef";
+}
+
+.icon-reactjs-line:before {
+  content: "\e759";
+}
+

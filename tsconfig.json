@@ -4,7 +4,8 @@
     "paths": {
       "@/*": ["src/*"],
       "utils": ["src/utils/"],
-      "@store": ["src/store/"]
+      "@store": ["src/store/"],
+      "@styl": ["assets/styl"],
     },
     "target": "ESNext",
     "useDefineForClassFields": true,

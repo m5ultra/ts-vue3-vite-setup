@@ -11,6 +11,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@store': path.resolve(__dirname, 'src/store'),
+      '@styl': path.resolve(__dirname, 'assets/styl'),
     },
   },
   plugins: [
