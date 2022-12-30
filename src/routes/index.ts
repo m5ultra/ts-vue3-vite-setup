@@ -4,6 +4,10 @@ const Login = async () => import('@/views/Login.vue')
 
 const routes: RouteRecordRaw[] = [
   {
+    path: '/',
+    redirect: '/home',
+  },
+  {
     path: '/login',
     name: 'login',
     component: Login,
