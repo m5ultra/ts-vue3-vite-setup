@@ -21,5 +21,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'import/no-unresolved': 0,
     '@typescript-eslint/no-unused-vars': 0,
+    'comma-dangle': 0,
   },
 };

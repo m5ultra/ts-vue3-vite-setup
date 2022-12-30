@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
-// options的写法
-export const useRoot = defineStore('counter', {
+// 01.options的写法
+export const useRoot = defineStore('num', {
   state: () => ({
     count: 1,
   }),
@@ -23,7 +23,7 @@ export const useRoot = defineStore('counter', {
   // persist: true, // 持久化所以数据
   persist: {
     key: 'vuex',
-    storage: window.sessionStorage,
+    storage: sessionStorage,
     // 部分持久化状态的点符号路径数组，[]意味着没有状态被持久化(默认为undefined，持久化整个状态)
     paths: ['count'],
   },
