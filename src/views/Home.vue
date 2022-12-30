@@ -1,6 +1,7 @@
 <template>
   <h2>This is Home Page</h2>
   <h3>{{ s.count }}</h3>
+  <h3>{{ s.double }}</h3>
   <button @click="handleClick">Click me!</button>
 </template>
 
