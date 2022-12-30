@@ -22,5 +22,6 @@ module.exports = {
     'import/no-unresolved': 0,
     '@typescript-eslint/no-unused-vars': 0,
     'comma-dangle': 0,
+    'import/extensions': 0,
   },
 };
