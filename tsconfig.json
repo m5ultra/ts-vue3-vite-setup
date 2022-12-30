@@ -3,7 +3,8 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "utils": ["src/utils/"]
+      "utils": ["src/utils/"],
+      "@store": ["src/store/"]
     },
     "target": "ESNext",
     "useDefineForClassFields": true,

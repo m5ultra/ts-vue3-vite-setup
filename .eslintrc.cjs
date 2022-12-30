@@ -17,5 +17,9 @@ module.exports = {
     'semi': 0,
     'import/no-extraneous-dependencies': 0,
     'vue/multi-word-component-names': 0,
+    'no-plusplus': 0,
+    'import/prefer-default-export': 0,
+    'import/no-unresolved': 0,
+    '@typescript-eslint/no-unused-vars': 0,
   },
 };

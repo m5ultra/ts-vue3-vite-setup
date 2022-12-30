@@ -31,3 +31,8 @@ npx eslint --init //初始化Eslint配置文件
 #### 安装CommitLint
 
 [Commit Lint 配置](https://blog.scott8013.cn/15.git.html)
+
+#### pinia持久化教程
+
+[持久化](https://juejin.cn/post/7139002338554937352#heading-5)
+
