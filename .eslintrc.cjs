@@ -23,5 +23,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 0,
     'comma-dangle': 0,
     'import/extensions': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
   },
 };

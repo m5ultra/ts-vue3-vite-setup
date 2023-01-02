@@ -3,6 +3,8 @@
   <h3>{{ s.count }}</h3>
   <h3>{{ s.double }}</h3>
   <el-button type="primary" @click="handleClick">Click me!</el-button>
+  <hr />
+  <router-view />
 </template>
 
 <script setup lang="ts">

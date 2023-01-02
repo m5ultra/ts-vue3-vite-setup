@@ -5,7 +5,7 @@
       "@/*": ["src/*"],
       "utils": ["src/utils/"],
       "@store": ["src/store/"],
-      "@styl": ["assets/styl"],
+      "@styl": ["assets/styl"]
     },
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -13,6 +13,8 @@
     "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
@@ -20,9 +22,7 @@
     "skipLibCheck": true,
     "noImplicitAny": false,
     "noEmit": true,
-    "types": [
-      "pinia-plugin-persistedstate"
-    ]
+    "types": ["pinia-plugin-persistedstate"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
