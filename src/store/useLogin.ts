@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { reactive, ref, toRaw, toRefs } from 'vue'
+import { reactive, ref, toRefs } from 'vue'
 import http from '@/utils/http'
 
 export const useLogin = defineStore(
@@ -16,12 +16,17 @@ export const useLogin = defineStore(
       data.infos = v
     }
 
+    const delToken = () => {
+      token.value = ''
+    }
+
     return {
       token,
       ...toRefs(data),
       updateToken,
       getUserInfos,
       updateInfos,
+      delToken,
     }
   },
   {

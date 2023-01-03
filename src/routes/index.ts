@@ -85,7 +85,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-  const { token, getUserInfos, updateInfos } = useLogin()
+  const { token, getUserInfos, updateInfos, delToken } = useLogin()
   if (to.meta.auth) {
     if (token) {
       const { infos, errcode } = await getUserInfos()
@@ -93,6 +93,10 @@ router.beforeEach(async (to, from, next) => {
       if (errcode === 0) {
         await updateInfos(infos)
         next()
+      } else {
+        // 清空token
+        delToken()
+        window.location.href = '/login'
       }
     } else {
       next('/login')

@@ -61,7 +61,6 @@
 <script lang="ts" setup>
 import http from '@/utils/http'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
 import { reactive, ref, toRaw } from 'vue'
 import { useLogin } from '@store'
@@ -103,9 +102,14 @@ const submitForm = (formEl: FormInstance | undefined) => {
       // login success
       if (errmsg === 'ok') {
         updateToken(token)
-        ElMessage.success('登录成功')
+        // eslint-disable-next-line no-undef
+        ElMessage({
+          message: '登录成功',
+          type: 'success',
+        })
         await route.push('/home')
       } else {
+        // eslint-disable-next-line no-undef
         ElMessage.error('登录失败')
       }
     }
