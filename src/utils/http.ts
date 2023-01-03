@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { useLogin } from '@store'
 
 const instance = axios.create({
   baseURL: 'http://api.h5ke.top/',
@@ -7,10 +8,10 @@ const instance = axios.create({
 
 // 请求拦截器
 instance.interceptors.request.use(
-  (conf) => {
-    console.log(conf, '请求拦截器')
-    return conf
-  },
+  (conf) =>
+    Object.assign(conf, {
+      headers: { authorization: useLogin().token },
+    }),
   (error) => {
     console.log(error)
   }
@@ -33,11 +34,11 @@ type Res = {
   errmsg: string
 }
 interface Http {
-  get: (
+  get: <T = any>(
     url: string,
-    data: Data,
+    data?: Data,
     config?: AxiosRequestConfig
-  ) => Promise<AxiosResponse>
+  ) => Promise<any>
   post: <T = any>(
     url: string,
     data: Data,

@@ -25,5 +25,7 @@ module.exports = {
     'import/extensions': 0,
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/no-explicit-any': 0,
+    'implicit-arrow-linebreak': 0,
+    'object-curly-newline': 0,
   },
 };

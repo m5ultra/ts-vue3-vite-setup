@@ -29,6 +29,9 @@ export default defineConfig({
     }),
     vueTsx(),
   ],
+  build: {
+    sourcemap: true,
+  },
   server: {
     port: 9000,
   },

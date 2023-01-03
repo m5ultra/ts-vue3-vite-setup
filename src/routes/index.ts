@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { useLogin } from '@store'
 
 const Login = async () => import('@/views/Login.vue')
 
@@ -81,6 +82,26 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+})
+
+router.beforeEach(async (to, from, next) => {
+  const { token, getUserInfos, updateInfos } = useLogin()
+  if (to.meta.auth) {
+    if (token) {
+      const { infos, errcode } = await getUserInfos()
+      // store data to pinia
+      if (errcode === 0) {
+        await updateInfos(infos)
+        next()
+      }
+    } else {
+      next('/login')
+    }
+  } else if (token && to.path === '/login') {
+    next('/')
+  } else {
+    next()
+  }
 })
 
 export default router
