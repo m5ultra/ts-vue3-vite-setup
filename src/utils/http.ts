@@ -28,13 +28,21 @@ instance.interceptors.response.use(
 interface Data {
   [index: string]: unknown
 }
+type Res = {
+  errcode: number
+  errmsg: string
+}
 interface Http {
   get: (
     url: string,
     data: Data,
     config?: AxiosRequestConfig
   ) => Promise<AxiosResponse>
-  post: (url: string, data: Data, config?: AxiosRequestConfig) => any
+  post: <T = any>(
+    url: string,
+    data: Data,
+    config?: AxiosRequestConfig
+  ) => Promise<T & Res>
   put: (
     url: string,
     data: Data,

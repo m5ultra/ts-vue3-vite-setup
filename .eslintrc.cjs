@@ -24,5 +24,6 @@ module.exports = {
     'comma-dangle': 0,
     'import/extensions': 0,
     '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/no-explicit-any': 0,
   },
 };

@@ -45,7 +45,7 @@
       <el-row :gutter="20">
         <el-col v-for="item in testUsers" :key="item.email" :span="12">
           <h3>
-            测试账号，<el-button
+            测试账号：<el-button
               @click="autoLogin({ email: item.email, pass: item.pass })"
               >一键登录</el-button
             >
@@ -61,7 +61,8 @@
 <script lang="ts" setup>
 import http from '@/utils/http'
 import { useRouter } from 'vue-router'
-import { ElMessage, FormInstance, FormRules } from 'element-plus'
+import { ElMessage } from 'element-plus'
+import type { FormInstance, FormRules } from 'element-plus'
 import { reactive, ref, toRaw } from 'vue'
 import { useLogin } from '@store'
 
@@ -87,11 +88,18 @@ const rules = reactive<FormRules>({
   pass: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 })
 
+type iToken = {
+  token: string
+}
+
 const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.validate(async (valid) => {
     if (valid) {
-      const { errmsg, token } = await http.post('users/login', toRaw(ruleForm))
+      const { errmsg, token } = await http.post<iToken>(
+        'users/login',
+        toRaw(ruleForm)
+      )
       // login success
       if (errmsg === 'ok') {
         updateToken(token)
