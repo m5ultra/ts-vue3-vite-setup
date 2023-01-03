@@ -8,9 +8,9 @@
 </template>
 
 <script setup lang="ts">
-import { useRoot } from '@store'
+import { useStore } from '@store'
 
-const s = useRoot()
+const s = useStore()
 
 const handleClick = () => s.increment()
 </script>

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useLogin } from '@/store/useLogin'
 import { computed, ref } from 'vue'
 
 // 01.options的写法
@@ -38,7 +39,7 @@ import { computed, ref } from 'vue'
 // })
 
 // setup 写法
-export const useRoot = defineStore(
+const useStore = defineStore(
   'num',
   () => {
     const count = ref(0)
@@ -57,10 +58,12 @@ export const useRoot = defineStore(
         paths: ['count'],
       },
       {
-        key: 'vuex02',
+        key: 'vuex',
         paths: ['count'],
         storage: localStorage,
       },
     ],
   }
 )
+
+export { useStore, useLogin }
