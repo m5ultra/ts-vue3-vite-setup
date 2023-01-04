@@ -93,10 +93,6 @@ router.beforeEach(async (to, from, next) => {
       if (errcode === 0) {
         await updateInfos(infos)
         next()
-      } else {
-        // 清空token
-        delToken()
-        window.location.href = '/login'
       }
     } else {
       next('/login')
