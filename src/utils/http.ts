@@ -1,8 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { useLogin } from '@store'
-import { ElMessage } from 'element-plus'
 
-const { delToken } = useLogin()
 const instance = axios.create({
   baseURL: 'http://api.h5ke.top/',
   timeout: 5000,
@@ -22,12 +20,13 @@ instance.interceptors.request.use(
 // 响应拦截器
 instance.interceptors.response.use(
   (response) => {
-    if (response.data.errormsg === 'token error') {
+    console.log(response)
+    if (response.data.errmsg === 'token error') {
       ElMessage({ type: 'error', message: 'Token 无效' })
-      delToken()
+      useLogin().delToken()
       setTimeout(() => {
         window.location.href = '/login'
-      }, 1500)
+      }, 1000)
     }
     return response.data
   },
