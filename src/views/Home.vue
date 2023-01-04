@@ -1,20 +1,36 @@
 <template>
-  <h2>This is Home Page</h2>
-  <h3>{{ s.count }}</h3>
-  <h3>{{ s.double }}</h3>
-  <el-button type="primary" @click="handleClick">Click me!</el-button>
-  <hr />
-  <router-view />
+  <el-container>
+    <el-header>
+      <HomeHeader />
+    </el-header>
+    <!--    <el-container>-->
+    <!--      <el-aside>-->
+    <!--        <home-aside></home-aside>-->
+    <!--      </el-aside>-->
+    <!--      <el-main>-->
+    <!--        <home-breadcrumb></home-breadcrumb>-->
+    <!--        <home-main></home-main>-->
+    <!--      </el-main>-->
+    <!--    </el-container>-->
+  </el-container>
 </template>
 
 <script setup lang="ts">
-import { useLogin, useStore } from '@store'
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  console.log(useLogin().infos, '999')
-})
-const s = useStore()
-
-const handleClick = () => s.increment()
+// import HomeAside from './components/HomeAside.vue';
+// import HomeBreadcrumb from './components/HomeBreadcrumb.vue';
+// import HomeMain from './components/HomeMain.vue';
 </script>
+
+<style scoped lang="scss">
+.el-header {
+  box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
+}
+.el-aside {
+  box-shadow: 2px 0 8px 0 rgb(29 35 41 / 5%);
+}
+.el-main {
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+}
+</style>
