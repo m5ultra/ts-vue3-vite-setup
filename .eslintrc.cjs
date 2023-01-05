@@ -27,5 +27,8 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 0,
     'implicit-arrow-linebreak': 0,
     'object-curly-newline': 0,
+    'operator-linebreak': 0,
+    'no-param-reassign': 0,
+    'no-shadow': 0,
   },
 };

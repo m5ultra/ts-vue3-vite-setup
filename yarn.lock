@@ -1151,7 +1151,7 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.5.0.tgz#6e52b3d1c38d13130101771821e09cdd414a16bc"
   integrity sha512-tlJpwF40DEQcfR/QF+wNMVyGMaO9FQp6Z1Wahj4Gk3CJQYHwA2xVG7iKDFdW6zuxZY9XWOpGcfNCTsX4McOsOg==
 
-"@element-plus/icons-vue@^2.0.10", "@element-plus/icons-vue@^2.0.6":
+"@element-plus/icons-vue@^2.0.6":
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/@element-plus/icons-vue/-/icons-vue-2.0.10.tgz#60808d613c3dbdad025577022be8a972739ade21"
   integrity sha512-ygEZ1mwPjcPo/OulhzLE7mtDrQBWI8vZzEWSNB2W/RNCRjoQGwbaK4N8lV4rid7Ts4qvySU3njMN7YCiSlSaTQ==
@@ -1331,38 +1331,10 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify-json/ep@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@iconify-json/ep/-/ep-1.1.8.tgz#2b1d05e96ee3148f5dd62b030c4669b7c4069fb7"
-  integrity sha512-pHCrsWU1R9/pTDU+Fps4+mjqOQFLtpGdXWegkhQ1P1DlgQAlCPyICtl6E1s8b7VwJMeZXaK84HA02UF6WD0o/Q==
-  dependencies:
-    "@iconify/types" "*"
-
-"@iconify-json/fe@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@iconify-json/fe/-/fe-1.1.5.tgz#ae6b96989ab79fb8e4fd532223ea28517170e845"
-  integrity sha512-hSmTa9t0+UQ9PFEerWJlaNIYrx6B8U+z6EFwUqjTR67c9u1pJUOvG3UKMt3hKX5Mq/wI7a3RuX7zoitCFBSpgg==
-  dependencies:
-    "@iconify/types" "*"
-
 "@iconify-json/ion@^1.1.6":
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/@iconify-json/ion/-/ion-1.1.6.tgz#3395420feb5e0d4081794c0c0f4f067365db1098"
   integrity sha512-WG1qcPF9ikYaJP32luMZm61wUW2wr8U3TkZ+b3aZ4FmN+wLSNOp2eHarIb6ht6HxhjR4ibt3QcKxz3TD6x7esA==
-  dependencies:
-    "@iconify/types" "*"
-
-"@iconify-json/mdi@^1.1.41":
-  version "1.1.41"
-  resolved "https://registry.yarnpkg.com/@iconify-json/mdi/-/mdi-1.1.41.tgz#a0afc26fd031e298baa5dc439743dffee1e3f437"
-  integrity sha512-nMT3k6cH48qi66m2mYDOh4YPW3BgSD+VLNXP7Z3LHNgKoGVLpA76AKWzYGshhyprebBGNXAk+72mlLLQSIojzQ==
-  dependencies:
-    "@iconify/types" "*"
-
-"@iconify-json/wi@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@iconify-json/wi/-/wi-1.1.3.tgz#dcebfdb5705f71a4a8ee675225d2affbaf205be7"
-  integrity sha512-OUMZ2Ue3r1WZjCetRlzA1capZ5EwHN8odI5L40sQvx1qJBH6SnNk0/ho1Fud2B6JdS02VceNZyeuNz+yaH8Vmg==
   dependencies:
     "@iconify/types" "*"
 

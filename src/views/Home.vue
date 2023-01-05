@@ -3,23 +3,17 @@
     <el-header>
       <HomeHeader />
     </el-header>
-    <!--    <el-container>-->
-    <!--      <el-aside>-->
-    <!--        <home-aside></home-aside>-->
-    <!--      </el-aside>-->
-    <!--      <el-main>-->
-    <!--        <home-breadcrumb></home-breadcrumb>-->
-    <!--        <home-main></home-main>-->
-    <!--      </el-main>-->
-    <!--    </el-container>-->
+    <el-container>
+      <el-aside>
+        <HomeAside />
+      </el-aside>
+      <el-main>
+        <HomeBreadcrumb />
+        <HomeMain />
+      </el-main>
+    </el-container>
   </el-container>
 </template>
-
-<script setup lang="ts">
-// import HomeAside from './components/HomeAside.vue';
-// import HomeBreadcrumb from './components/HomeBreadcrumb.vue';
-// import HomeMain from './components/HomeMain.vue';
-</script>
 
 <style scoped lang="scss">
 .el-header {

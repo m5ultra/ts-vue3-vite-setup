@@ -20,7 +20,6 @@ instance.interceptors.request.use(
 // 响应拦截器
 instance.interceptors.response.use(
   (response) => {
-    console.log(response)
     if (response.data.errmsg === 'token error') {
       ElMessage({ type: 'error', message: 'Token 无效' })
       useLogin().delToken()
