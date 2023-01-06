@@ -17,18 +17,20 @@
     "husky": "^8.0.2",
     "js-cookie": "^3.0.1",
     "lint-staged": "^13.1.0",
+    "lodash": "^4.17.21",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.2",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6",
-    "lodash": "^4.17.21"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.3.0",
+    "@element-plus/icons-vue": "^2.0.10",
     "@iconify-json/ant-design": "^1.1.4",
     "@iconify-json/ion": "^1.1.6",
     "@types/axios": "^0.14.0",
     "@types/js-cookie": "^3.0.2",
+    "@types/node": "^18.11.18",
     "@types/vue-router": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",

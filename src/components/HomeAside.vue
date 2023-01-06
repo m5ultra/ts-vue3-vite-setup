@@ -6,7 +6,9 @@
   >
     <el-sub-menu v-for="item in menus" :key="item.path" :index="item.path">
       <template #title>
-        <el-icon><component :is="item.meta?.icon"></component></el-icon>
+        <el-icon>
+          <component :is="item.meta?.icon"></component>
+        </el-icon>
         <span>{{ item.meta?.title }}</span>
       </template>
       <el-menu-item

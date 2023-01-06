@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { useLogin } from '@/store/useLogin'
+import { useSign } from '@/store/useSign'
 import { computed, ref } from 'vue'
 
 // 01.options的写法
@@ -66,4 +67,4 @@ const useStore = defineStore(
   }
 )
 
-export { useStore, useLogin }
+export { useStore, useLogin, useSign }

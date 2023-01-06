@@ -25,6 +25,7 @@ const routes: RouteRecordRaw[] = [
     path: '/home',
     name: 'home',
     component: async () => import('@/views/Home.vue'),
+    redirect: '/home/sign',
     meta: {
       menu: true,
       title: '考勤管理',
@@ -68,7 +69,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'sign',
         name: 'sign',
-        component: async () => import('@/views/Sign'),
+        component: async () => import('@/views/Sign.vue'),
         meta: {
           menu: true,
           title: '在线打卡签到',
@@ -95,9 +96,6 @@ router.beforeEach(async (to, from, next) => {
         next()
       } else {
         next()
-        // 清空token
-        // delToken()
-        // window.location.href = '/login'
       }
     } else {
       next('/login')

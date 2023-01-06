@@ -25,7 +25,13 @@ export default defineConfig({
     vue(),
     ViteSetupExtend(),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver(),
+        // 自动导入图标组件
+        IconsResolver({
+          enabledCollections: ['ion'],
+        }),
+      ],
       dts: path.resolve(pathSrc, 'auto-imports.d.ts'),
     }),
     Components({

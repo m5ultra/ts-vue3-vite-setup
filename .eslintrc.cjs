@@ -30,5 +30,10 @@ module.exports = {
     'operator-linebreak': 0,
     'no-param-reassign': 0,
     'no-shadow': 0,
+    'guard-for-in': 0,
+    'no-restricted-syntax': 0,
+    'default-case': 0,
+    'consistent-return': 0,
+    'no-underscore-dangle': 0,
   },
 };
