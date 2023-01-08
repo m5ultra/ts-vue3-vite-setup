@@ -8,6 +8,7 @@ import Icons from 'unplugin-icons/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import ViteSetupExtend from 'vite-plugin-vue-setup-extend'
 import vueTsx from '@vitejs/plugin-vue-jsx'
+// import babel from 'vite-plugin-babel'
 
 const pathSrc = path.resolve(__dirname, 'src')
 
@@ -22,7 +23,9 @@ export default defineConfig({
     },
   },
   plugins: [
-    vue(),
+    // '@babel/plugin-proposal-pipeline-operator',
+    // '@babel/plugin-proposal-optional-chaining',
+    vue({}),
     ViteSetupExtend(),
     AutoImport({
       resolvers: [

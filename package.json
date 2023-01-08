@@ -24,10 +24,13 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.20.7",
+    "@babel/plugin-proposal-pipeline-operator": "^7.18.9",
     "@commitlint/config-conventional": "^17.3.0",
     "@element-plus/icons-vue": "^2.0.10",
     "@iconify-json/ant-design": "^1.1.4",
     "@iconify-json/ion": "^1.1.6",
+    "@rollup/plugin-babel": "^6.0.3",
     "@types/axios": "^0.14.0",
     "@types/js-cookie": "^3.0.2",
     "@types/node": "^18.11.18",
@@ -60,6 +63,7 @@
     "unplugin-icons": "^0.15.0",
     "unplugin-vue-components": "^0.22.12",
     "vite": "^4.0.0",
+    "vite-plugin-babel": "^1.1.2",
     "vite-plugin-vue-setup-extend": "^0.4.0",
     "vue-tsc": "^1.0.11"
   },

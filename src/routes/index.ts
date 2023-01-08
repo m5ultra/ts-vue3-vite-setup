@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-import { useLogin } from '@store'
+import { useLogin, useSign } from '@store'
+import * as _ from 'lodash'
 
 const Login = async () => import('@/views/Login.vue')
 
@@ -76,6 +77,23 @@ const routes: RouteRecordRaw[] = [
           icon: 'calendar',
           auth: true,
         },
+        async beforeEnter(to, from, next) {
+          const usersInfos = useLogin().infos
+          const signsInfos = useSign().infos
+
+          if (_.isEmpty(signsInfos)) {
+            const { errmsg, infos } = await useSign().getInfos({
+              // @ts-ignore
+              userid: usersInfos._id,
+            })
+            if (errmsg === 'ok') {
+              useSign().updateInfos(infos)
+              next()
+            }
+          } else {
+            next()
+          }
+        },
       },
     ],
   },
@@ -86,7 +104,7 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-  const { token, getUserInfos, updateInfos, delToken } = useLogin()
+  const { token, getUserInfos, updateInfos } = useLogin()
   if (to.meta.auth) {
     if (token) {
       const { infos, errcode } = await getUserInfos()

@@ -53,11 +53,11 @@ interface Http {
     data: Data,
     config?: AxiosRequestConfig
   ) => Promise<T & Res>
-  put: (
+  put: <T = any>(
     url: string,
     data: Data,
     config?: AxiosRequestConfig
-  ) => Promise<AxiosResponse>
+  ) => Promise<T & Res>
   patch: (
     url: string,
     data: Data,

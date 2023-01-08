@@ -35,7 +35,7 @@
       </el-space>
     </template>
     <template #date-cell="{ data }">
-      <div>{{ renderDate(data.day) }}</div>
+      <div>{{ renderDate(data?.day) }}</div>
       <div class="show-time">{{ renderTime(data.day) }}</div>
     </template>
   </el-calendar>
@@ -81,53 +81,48 @@ const detailState = reactive({
 })
 
 watchEffect((reset) => {
-  console.log(signsInfos)
-
-  // const detailMonth = (signsInfos.value.detail as { [index: string]: unknown })[
-  //   toZero(month.value)
-  // ] as { [index: string]: unknown }
-  //
-  // for (const attr in detailMonth) {
-  //   switch (detailMonth[attr]) {
-  //     case DetailKey.normal:
-  //       detailValue.normal++
-  //       break
-  //     case DetailKey.absent:
-  //       detailValue.absent++
-  //       break
-  //     case DetailKey.miss:
-  //       detailValue.miss++
-  //       break
-  //     case DetailKey.late:
-  //       detailValue.late++
-  //       break
-  //     case DetailKey.early:
-  //       detailValue.early++
-  //       break
-  //     case DetailKey.lateAndEarly:
-  //       detailValue.lateAndEarly++
-  //       break
-  //   }
-  // }
-  //
-  // for (const attr in detailValue) {
-  //   if (
-  //     attr !== 'normal' &&
-  //     detailValue[attr as keyof typeof detailValue] !== 0
-  //   ) {
-  //     detailState.type = 'danger'
-  //     detailState.text = '异常'
-  //   }
-  // }
-  //
-  // reset(() => {
-  //   detailState.type = 'success'
-  //   detailState.text = '正常'
-  //
-  //   for (const attr in detailValue) {
-  //     detailValue[attr as keyof typeof detailValue] = 0
-  //   }
-  // })
+  // @ts-ignore-next-line
+  const detailMonth = (signsInfos.value.detail as { [index: string]: unknown })[
+    toZero(month.value)
+  ] as { [index: string]: unknown }
+  for (const attr in detailMonth) {
+    switch (detailMonth[attr]) {
+      case DetailKey.normal:
+        detailValue.normal++
+        break
+      case DetailKey.absent:
+        detailValue.absent++
+        break
+      case DetailKey.miss:
+        detailValue.miss++
+        break
+      case DetailKey.late:
+        detailValue.late++
+        break
+      case DetailKey.early:
+        detailValue.early++
+        break
+      case DetailKey.lateAndEarly:
+        detailValue.lateAndEarly++
+        break
+    }
+  }
+  for (const attr in detailValue) {
+    if (
+      attr !== 'normal' &&
+      detailValue[attr as keyof typeof detailValue] !== 0
+    ) {
+      detailState.type = 'danger'
+      detailState.text = '异常'
+    }
+  }
+  reset(() => {
+    detailState.type = 'success'
+    detailState.text = '正常'
+    for (const attr in detailValue) {
+      detailValue[attr as keyof typeof detailValue] = 0
+    }
+  })
 })
 
 const handleChange = () => {
@@ -140,29 +135,26 @@ const handleToException = () => {
   })
 }
 const renderDate = (day: string) => day.split('-')[2]
-const renderTime = (day: string) => {
-  // const [, month, date] = day.split('-')
-  // const ret = (
-  //   (signsInfos.value.time as { [index: string]: unknown })[month] as {
-  //     [index: string]: unknown
-  //   }
-  // )[date]
-  // if (Array.isArray(ret)) {
-  //   return ret.join('-')
-  // }
-}
-const handlePutTime = () => {
-  useSign().putTime('signs/putTime')
-  console.log(useSign().putTime('signs/putTime'), 'uUu')
 
-  // store
-  //   .dispatch('signs/putTime', { userid: usersInfos.value._id })
-  //   .then((res) => {
-  //     if (res.data.errcode === 0) {
-  //       store.commit('signs/updateInfos', res.data.infos)
-  //       ElMessage.success('签到成功')
-  //     }
-  //   })
+const renderTime = (day: string) => {
+  const [, m, d] = day.split('-')
+  // @ts-ignore-next-line
+  const ret = signsInfos.value.time[m][d]
+  console.log(ret, 'oOo')
+  if (Array.isArray(ret)) {
+    return ret.join('-')
+  }
+}
+
+const handlePutTime = async () => {
+  const { errmsg, infos } = await useSign().putTime('signs/putTime', {
+    // @ts-ignore-next-line
+    userid: usersInfos.value?._id,
+  })
+  if (errmsg === 'ok') {
+    useSign().updateInfos(infos)
+    ElMessage.success('签到成功')
+  }
 }
 </script>
 
