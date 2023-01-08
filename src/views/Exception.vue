@@ -120,4 +120,11 @@ const renderTime = (date: string) => {
 .apply-info {
   margin: 10px;
 }
+
+.home-main {
+  .el-row {
+    height: calc(100vh - 260px);
+    overflow-y: auto;
+  }
+}
 </style>
