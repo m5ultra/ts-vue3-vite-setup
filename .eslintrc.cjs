@@ -35,5 +35,6 @@ module.exports = {
     'default-case': 0,
     'consistent-return': 0,
     'no-underscore-dangle': 0,
+    'function-paren-newline': 0,
   },
 };

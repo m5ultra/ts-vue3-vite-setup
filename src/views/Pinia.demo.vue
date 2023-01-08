@@ -8,12 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import { useLogin, useStore } from '@store'
-import { onMounted } from 'vue'
+import { useStore } from '@store'
 
-onMounted(() => {
-  console.log(useLogin().infos, '999')
-})
 const s = useStore()
 
 const handleClick = () => s.increment()

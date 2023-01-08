@@ -13,7 +13,7 @@ instance.interceptors.request.use(
       headers: { authorization: useLogin().token },
     }),
   (error) => {
-    console.log(error)
+    console.log('请求失败')
   }
 )
 

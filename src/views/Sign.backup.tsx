@@ -1,10 +1,5 @@
-import { onBeforeMount } from 'vue'
-
 const SignBackup = {
   setup() {
-    onBeforeMount(() => {
-      console.log('mount')
-    })
     return () => <h2>Tsx 写法, 配合element-plus, auto-import, 功能有问题</h2>
   },
 }

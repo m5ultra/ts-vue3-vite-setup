@@ -140,7 +140,6 @@ const renderTime = (day: string) => {
   const [, m, d] = day.split('-')
   // @ts-ignore-next-line
   const ret = signsInfos.value.time[m][d]
-  console.log(ret, 'oOo')
   if (Array.isArray(ret)) {
     return ret.join('-')
   }
