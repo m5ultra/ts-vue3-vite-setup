@@ -65,7 +65,7 @@ import { ElMessage } from 'element-plus'
 const defaultType = '全部'
 const approverType = ref(defaultType)
 const searchWord = ref('')
-const pageSize = ref(2)
+const pageSize = ref(5)
 const pageCurrent = ref(1)
 
 const usersInfos = computed(() => useLogin().infos)

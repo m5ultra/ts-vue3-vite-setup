@@ -204,6 +204,25 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/403',
+    name: 'notAuth',
+    component: () => import('@/views/NotAuth.vue'),
+  },
+  {
+    path: '/404',
+    name: 'notFound',
+    component: () => import('@/views/NotFound.vue'),
+  },
+  {
+    path: '/500',
+    name: 'notServer',
+    component: () => import('@/views/NotServer.vue'),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/404',
+  },
 ]
 const router = createRouter({
   history: createWebHistory(),
