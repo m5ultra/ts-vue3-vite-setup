@@ -12,7 +12,7 @@ export interface NewsState {
 
 export const useNews = defineStore('news', () => {
   const state: NewsState = reactive({ info: {} })
-  const updateInfo = (state, payload) => {
+  const updateInfo = (payload) => {
     state.info = payload
   }
 

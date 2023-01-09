@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-import { useLogin, useSign } from '@store'
+import { useLogin, useSign, useNews, useCheck } from '@store'
 import * as _ from 'lodash'
 
 const Login = async () => import('@/views/Login.vue')
@@ -60,6 +60,15 @@ const routes: RouteRecordRaw[] = [
           } else {
             next()
           }
+          if (_.isEmpty(useNews().info)) {
+            const { errcode, info } = await useNews().getRemind({
+              // @ts-ignore
+              userid: usersInfos._id,
+            })
+            if (errcode === 0) {
+              useNews().updateInfo(info)
+            }
+          }
         },
       },
       {
@@ -72,6 +81,46 @@ const routes: RouteRecordRaw[] = [
           icon: 'warning',
           auth: true,
         },
+        async beforeEnter(to, from, next) {
+          const usersInfos = useLogin().infos
+          const signsInfos = useSign().infos
+          const checksApplyList = useCheck().applyList
+          const newsInfo = useNews().info
+          if (_.isEmpty(signsInfos)) {
+            const { errcode, infos } = await useSign().getTime({
+              // @ts-ignore
+              userid: usersInfos._id,
+            })
+            if (errcode === 0) {
+              useSign().updateInfos(infos)
+            } else {
+              return
+            }
+          }
+          if (_.isEmpty(checksApplyList)) {
+            const { errcode, rets } = await useCheck().getApply({
+              // @ts-ignore
+              applicantid: usersInfos._id,
+            })
+            if (errcode === 0) {
+              useCheck().updateApplyList(rets)
+            } else {
+              return
+            }
+          }
+          if (_.isEmpty(newsInfo)) {
+            const { errcode, info } = await useNews().getRemind({
+              // @ts-ignore
+              userid: usersInfos._id,
+            })
+            if (errcode === 0) {
+              useNews().updateInfo(info)
+            } else {
+              return
+            }
+          }
+          next()
+        },
       },
       {
         path: 'apply',
@@ -83,6 +132,35 @@ const routes: RouteRecordRaw[] = [
           icon: 'document-add',
           auth: true,
         },
+        async beforeEnter(to, from, next) {
+          const usersInfos = useLogin().infos
+          const checksApplyList = useCheck().applyList
+          const newsInfo = useNews().info
+          if (_.isEmpty(checksApplyList)) {
+            const { errcode, rets } = await useCheck().getApply({
+              // @ts-ignore
+              applicantid: usersInfos._id,
+            })
+            if (errcode === 0) {
+              useCheck().updateApplyList(rets)
+            } else {
+              return
+            }
+          }
+          if (newsInfo.applicant) {
+            const { errcode, info } = await useNews().putRemind({
+              // @ts-ignore
+              userid: usersInfos._id,
+              applicant: false,
+            })
+            if (errcode === 0) {
+              useNews().updateInfo(info)
+            } else {
+              return
+            }
+          }
+          next()
+        },
       },
       {
         path: 'check',
@@ -93,6 +171,35 @@ const routes: RouteRecordRaw[] = [
           title: '我的考勤审批',
           icon: 'finished',
           auth: true,
+        },
+        async beforeEnter(to, from, next) {
+          const usersInfos = useLogin().infos
+          const checksCheckList = useCheck().checkList
+          const newsInfo = useNews().info
+          if (_.isEmpty(checksCheckList)) {
+            const { errcode, rets } = await useCheck().getApply({
+              // @ts-ignore
+              approverid: usersInfos._id,
+            })
+            if (errcode === 0) {
+              useCheck().updateCheckList(rets)
+            } else {
+              return
+            }
+          }
+          if (newsInfo.approver) {
+            const { errcode, info } = await useNews().putRemind({
+              // @ts-ignore
+              userid: usersInfos._id,
+              approver: false,
+            })
+            if (errcode === 0) {
+              useNews().updateInfo(info)
+            } else {
+              return
+            }
+          }
+          next()
         },
       },
     ],

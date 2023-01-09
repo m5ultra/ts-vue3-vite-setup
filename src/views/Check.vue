@@ -123,7 +123,7 @@ const applyList = computed(() =>
       (v.note as string).includes(searchWord.value)
   )
 )
-const pageSize = ref(2)
+const pageSize = ref(5)
 const pageCurrent = ref(1)
 const dialogVisible = ref(false)
 

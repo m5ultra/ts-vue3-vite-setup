@@ -12,7 +12,7 @@ export const useSign = defineStore(
     const updateInfos = (payload) => {
       data.infos = payload
     }
-
+    const getTime = (payload) => http.get('/signs/time', payload)
     const getInfos = (payload) => http.get('/signs/time', payload)
 
     return {
@@ -20,6 +20,7 @@ export const useSign = defineStore(
       putTime,
       updateInfos,
       getInfos,
+      getTime,
     }
   },
   {
