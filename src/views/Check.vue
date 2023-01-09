@@ -1,6 +1,5 @@
 <template>
-  <div class="apply-title">
-    <el-button type="primary" @click="handleOpen">添加审批</el-button>
+  <div class="check-title">
     <el-space>
       <el-input v-model="searchWord" placeholder="请输入搜索关键词" />
       <el-button type="primary" icon="search">搜索</el-button>
@@ -13,8 +12,8 @@
       </el-radio-group>
     </el-space>
   </div>
-  <div class="apply-table">
-    <el-table :data="pageApplyList" border>
+  <div class="check-table">
+    <el-table :data="pageCheckList" border>
       <el-table-column prop="applicantname" label="申请人" width="180" />
       <el-table-column prop="reason" label="审批事由" width="180" />
       <el-table-column prop="time" label="时间">
@@ -23,140 +22,62 @@
         </template>
       </el-table-column>
       <el-table-column prop="note" label="备注" />
-      <el-table-column prop="approvername" label="审批人" width="180" />
+      <el-table-column label="操作" width="180">
+        <template #default="scope">
+          <el-button
+            @click="
+              handlePutApply(scope.row._id, '已通过', scope.row.applicantid)
+            "
+            type="success"
+            icon="check"
+            size="small"
+            circle
+          ></el-button>
+          <el-button
+            @click="
+              handlePutApply(scope.row._id, '未通过', scope.row.applicantid)
+            "
+            type="danger"
+            icon="close"
+            size="small"
+            circle
+          ></el-button>
+        </template>
+      </el-table-column>
       <el-table-column prop="state" label="状态" width="180" />
     </el-table>
     <el-pagination
       small
       background
       layout="prev, pager, next"
-      :total="applyList.length"
+      :total="checkList.length"
       :page-size="pageSize"
       @current-change="handleChange"
     />
   </div>
-  <el-dialog
-    v-model="dialogVisible"
-    title="添加审批"
-    width="500px"
-    :before-close="handleClose"
-  >
-    <el-form
-      ref="ruleFormRef"
-      :model="ruleForm"
-      :rules="rules"
-      label-width="80px"
-    >
-      <el-form-item label="审批人" prop="approvername">
-        <el-select v-model="ruleForm.approvername" placeholder="请选择审批人">
-          <el-option
-            v-for="item in approver"
-            :key="item._id"
-            :value="item.name"
-            :label="item.name"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="审批事由" prop="reason">
-        <el-select v-model="ruleForm.reason" placeholder="请选择审批事由">
-          <el-option value="年假" label="年假" />
-          <el-option value="事假" label="事假" />
-          <el-option value="病假" label="病假" />
-          <el-option value="外出" label="外出" />
-          <el-option value="补签卡" label="补签卡" />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="时间" prop="time">
-        <el-date-picker
-          v-model="ruleForm.time"
-          type="datetimerange"
-          start-placeholder="起始日期"
-          end-placeholder="结束日期"
-        />
-      </el-form-item>
-      <el-form-item label="备注" prop="note">
-        <el-input
-          v-model="ruleForm.note"
-          :autosize="{ minRows: 4, maxRows: 6 }"
-          type="textarea"
-          placeholder="请输入备注"
-        />
-      </el-form-item>
-    </el-form>
-    <template #footer>
-      <el-button @click="resetForm(ruleFormRef)">重置</el-button>
-      <el-button type="primary" @click="submitForm(ruleFormRef)"
-        >提交</el-button
-      >
-    </template>
-  </el-dialog>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, reactive } from 'vue'
-import { useLogin, useCheck, useNews } from '@/store'
+import { computed, ref } from 'vue'
+import { useCheck, useLogin, useNews } from '@/store'
 import { ElMessage } from 'element-plus'
-import type { DateModelType, FormInstance, FormRules } from 'element-plus'
-import moment from 'moment'
 
-interface ApplyList {
-  applicantid: string
-  applicantname: string
-  approverid: string
-  approvername: string
-  note: string
-  reason: string
-  time: [DateModelType, DateModelType]
-}
 const defaultType = '全部'
 const approverType = ref(defaultType)
 const searchWord = ref('')
+const pageSize = ref(2)
+const pageCurrent = ref(1)
+
 const usersInfos = computed(() => useLogin().infos)
-const approver = computed(
-  // @ts-ignore
-  () => usersInfos.value.approver as { [index: string]: unknown }[]
-)
-const applyList = computed(() =>
-  useCheck().applyList.filter(
+const checkList = computed(() =>
+  useCheck().checkList.filter(
     (v) =>
       (v.state === approverType.value || defaultType === approverType.value) &&
       (v.note as string).includes(searchWord.value)
   )
 )
-const pageSize = ref(5)
-const pageCurrent = ref(1)
-const dialogVisible = ref(false)
-
-const ruleFormRef = ref<FormInstance>()
-const ruleForm = reactive<ApplyList>({
-  applicantid: '',
-  applicantname: '',
-  approverid: '',
-  approvername: '',
-  note: '',
-  reason: '',
-  time: ['', ''],
-})
-const validatorTime = (
-  rule: unknown,
-  value: [DateModelType, DateModelType],
-  callback: (arg?: Error) => void
-) => {
-  if (!value[0] && !value[1]) {
-    callback(new Error('请选择审批时间'))
-  } else {
-    callback()
-  }
-}
-const rules = reactive<FormRules>({
-  approvername: [{ required: true, message: '请选择审批人', trigger: 'blur' }],
-  reason: [{ required: true, message: '请选择请假事由', trigger: 'blur' }],
-  time: [{ validator: validatorTime, trigger: 'blur' }],
-  note: [{ required: true, message: '请添加审批备注', trigger: 'blur' }],
-})
-
-const pageApplyList = computed(() =>
-  applyList.value.slice(
+const pageCheckList = computed(() =>
+  checkList.value.slice(
     (pageCurrent.value - 1) * pageSize.value,
     pageCurrent.value * pageSize.value
   )
@@ -165,64 +86,40 @@ const pageApplyList = computed(() =>
 const handleChange = (value: number) => {
   pageCurrent.value = value
 }
-const handleClose = () => {
-  dialogVisible.value = false
-}
-const handleOpen = () => {
-  dialogVisible.value = true
-}
-const submitForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return
-  formEl.validate(async (valid) => {
-    if (valid) {
-      // @ts-ignore
-      ruleForm.applicantid = usersInfos.value._id as string
-      // @ts-ignore
-      ruleForm.applicantname = usersInfos.value.name as string
-      ruleForm.approverid = (
-        approver.value.find((v) => v.name === ruleForm.approvername) as {
-          [index: string]: unknown
-        }
-      )._id as string
-      ruleForm.time[0] = moment(ruleForm.time[0]).format('YYYY-MM-DD hh:mm:ss')
-      ruleForm.time[1] = moment(ruleForm.time[1]).format('YYYY-MM-DD hh:mm:ss')
-      const { errcode } = await useCheck().postApply(ruleForm)
+const handlePutApply = (
+  _id: string,
+  state: '已通过' | '未通过',
+  applicantid: string
+) => {
+  useCheck()
+    .putApply({ _id, state })
+    .then(({ errcode, rets }) => {
       if (errcode === 0) {
-        const { errmsg, rets } = await useCheck().getApply({
+        useCheck()
           // @ts-ignore
-          applicantid: usersInfos.value._id,
+          .getApply({ approverid: usersInfos.value._id })
+          .then(({ errcode, rets }) => {
+            if (errcode === 0) {
+              useCheck().updateCheckList(rets)
+            }
+          })
+        useNews().putRemind({
+          userid: applicantid,
+          applicant: true,
         })
-        if (errmsg === 'ok') {
-          useCheck().updateApplyList(rets)
-        }
-        await useNews().putRemind({
-          userid: ruleForm.approverid,
-          approver: true,
-        })
-        ElMessage.success('添加审批成功')
-        // eslint-disable-next-line no-use-before-define
-        resetForm(ruleFormRef.value)
-        handleClose()
+        ElMessage.success('审批成功')
       }
-    } else {
-      console.log('error submit!')
-      return false
-    }
-  })
-}
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return
-  formEl.resetFields()
+    })
 }
 </script>
 
 <style scoped lang="scss">
-.apply-title {
+.check-title {
   margin: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
-.apply-table {
+.check-table {
   margin: 10px;
   .el-pagination {
     float: right;
