@@ -33,9 +33,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useLogin } from '@/store'
-// @ts-ignore
+
 const head = computed(() => useLogin().infos.head)
-// @ts-ignore
 const name = computed(() => useLogin().infos.name)
 
 const handleLogout = () => {

@@ -64,6 +64,7 @@ import { useRouter } from 'vue-router'
 import type { FormInstance, FormRules } from 'element-plus'
 import { reactive, ref, toRaw } from 'vue'
 import { useLogin } from '@store'
+import { ElMessage } from 'element-plus'
 
 const { updateToken } = useLogin()
 const route = useRouter()
@@ -102,7 +103,6 @@ const submitForm = (formEl: FormInstance | undefined) => {
       // login success
       if (errmsg === 'ok') {
         updateToken(token)
-        // eslint-disable-next-line no-undef
         ElMessage({
           message: '登录成功',
           type: 'success',

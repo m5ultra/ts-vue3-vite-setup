@@ -115,7 +115,7 @@ const searchWord = ref('')
 const usersInfos = computed(() => useLogin().infos)
 const approver = computed(
   // @ts-ignore
-  () => usersInfos.value.approver as { [index: string]: unknown }[]
+  () => usersInfos.value.approver
 )
 const applyList = computed(() =>
   useCheck().applyList.filter(

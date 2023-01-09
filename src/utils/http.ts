@@ -1,5 +1,6 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import { useLogin } from '@store'
+import { ElMessage } from 'element-plus'
 
 const instance = axios.create({
   baseURL: 'http://api.h5ke.top/',
@@ -38,36 +39,38 @@ instance.interceptors.response.use(
 interface Data {
   [index: string]: unknown
 }
-type Res = {
-  errcode: number
-  errmsg: string
+
+export type Result = {
+  errcode?: number
+  errmsg?: string
 }
+
 interface Http {
   get: <T = any>(
     url: string,
     data?: Data,
     config?: AxiosRequestConfig
-  ) => Promise<any>
+  ) => Promise<T & Result>
   post: <T = any>(
     url: string,
     data: Data,
     config?: AxiosRequestConfig
-  ) => Promise<T & Res>
+  ) => Promise<T & Result>
   put: <T = any>(
     url: string,
     data: Data,
     config?: AxiosRequestConfig
-  ) => Promise<T & Res>
-  patch: (
+  ) => Promise<T & Result>
+  patch: <T = any>(
     url: string,
     data: Data,
     config?: AxiosRequestConfig
-  ) => Promise<AxiosResponse>
-  delete: (
+  ) => Promise<T & Result>
+  delete: <T = any>(
     url: string,
     data: Data,
     config?: AxiosRequestConfig
-  ) => Promise<AxiosResponse>
+  ) => Promise<T & Result>
 }
 
 const http: Http = {

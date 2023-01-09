@@ -93,11 +93,8 @@ const handleToApply = () => {
 }
 
 const renderTime = (date: string) => {
-  const ret = (
-    (signsInfos.value.time as { [index: string]: unknown })[
-      toZero(month.value)
-    ] as { [index: string]: unknown }
-  )[date]
+  // @ts-ignore
+  const ret = signsInfos.value.time[toZero(month.value)][date]
   if (Array.isArray(ret)) {
     return ret.join('-')
   }

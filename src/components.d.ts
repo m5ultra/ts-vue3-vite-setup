@@ -7,7 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AntDesignCopyFilled: typeof import('./components/icons/AntDesignCopyFilled.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBadge: typeof import('element-plus/es')['ElBadge']
@@ -52,7 +51,6 @@ declare module '@vue/runtime-core' {
     HomeBreadcrumb: typeof import('./components/HomeBreadcrumb.vue')['default']
     HomeHeader: typeof import('./components/HomeHeader.vue')['default']
     HomeMain: typeof import('./components/HomeMain.vue')['default']
-    IonCopySharp: typeof import('./components/icons/IonCopySharp.vue')['default']
     IonIosBell: typeof import('~icons/ion/ios-bell')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
