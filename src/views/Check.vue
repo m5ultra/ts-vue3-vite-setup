@@ -60,7 +60,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useCheck, useLogin, useNews } from '@/store'
-import { ElMessage } from 'element-plus'
 
 const defaultType = '全部'
 const approverType = ref(defaultType)

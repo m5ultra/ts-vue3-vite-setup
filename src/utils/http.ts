@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { useLogin } from '@store'
-import { ElMessage } from 'element-plus'
 
 const instance = axios.create({
   baseURL: 'http://api.h5ke.top/',

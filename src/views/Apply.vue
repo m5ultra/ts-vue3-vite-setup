@@ -95,7 +95,6 @@
 <script setup lang="ts">
 import { computed, ref, reactive } from 'vue'
 import { useLogin, useCheck, useNews } from '@/store'
-import { ElMessage } from 'element-plus'
 import type { DateModelType, FormInstance, FormRules } from 'element-plus'
 import moment from 'moment'
 

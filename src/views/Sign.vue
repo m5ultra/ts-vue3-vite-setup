@@ -45,7 +45,6 @@
 import { ref, reactive, computed, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { useLogin, useSign } from '@/store'
-import { ElMessage } from 'element-plus'
 import { toZero } from '@/utils/common'
 
 const router = useRouter()
