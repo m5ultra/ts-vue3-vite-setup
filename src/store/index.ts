@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { useLogin } from '@/store/useLogin'
 import { useSign } from '@/store/useSign'
+import { useCheck } from '@/store/useCheck'
+import { useNews } from '@/store/useNews'
 import { computed, ref } from 'vue'
 
 // 01.options的写法
@@ -67,4 +69,4 @@ const useStore = defineStore(
   }
 )
 
-export { useStore, useLogin, useSign }
+export { useStore, useLogin, useSign, useCheck, useNews }

@@ -35,39 +35,6 @@ const routes: RouteRecordRaw[] = [
     },
     children: [
       {
-        path: 'apply',
-        name: 'apply',
-        component: async () => import('@/views/Apply.vue'),
-        meta: {
-          menu: true,
-          title: '添加考勤审批',
-          icon: 'document-add',
-          auth: true,
-        },
-      },
-      {
-        path: 'check',
-        name: 'check',
-        component: async () => import('@/views/Check.vue'),
-        meta: {
-          menu: true,
-          title: '我的考勤审批',
-          icon: 'finished',
-          auth: true,
-        },
-      },
-      {
-        path: 'exception',
-        name: 'exception',
-        component: async () => import('@/views/Exception.vue'),
-        meta: {
-          menu: true,
-          title: '异常考勤查询',
-          icon: 'warning',
-          auth: true,
-        },
-      },
-      {
         path: 'sign',
         name: 'sign',
         component: async () => import('@/views/Sign.vue'),
@@ -93,6 +60,39 @@ const routes: RouteRecordRaw[] = [
           } else {
             next()
           }
+        },
+      },
+      {
+        path: 'exception',
+        name: 'exception',
+        component: async () => import('@/views/Exception.vue'),
+        meta: {
+          menu: true,
+          title: '异常考勤查询',
+          icon: 'warning',
+          auth: true,
+        },
+      },
+      {
+        path: 'apply',
+        name: 'apply',
+        component: async () => import('@/views/Apply.vue'),
+        meta: {
+          menu: true,
+          title: '添加考勤审批',
+          icon: 'document-add',
+          auth: true,
+        },
+      },
+      {
+        path: 'check',
+        name: 'check',
+        component: async () => import('@/views/Check.vue'),
+        meta: {
+          menu: true,
+          title: '我的考勤审批',
+          icon: 'finished',
+          auth: true,
         },
       },
     ],

@@ -171,4 +171,9 @@ const handlePutTime = async () => {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+:deep(.el-calendar-table__row) {
+  .next {
+    display: none;
+  }
+}
 </style>

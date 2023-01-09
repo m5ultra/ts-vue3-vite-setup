@@ -1,5 +1,5 @@
 <template>
-  <h2>应用页面</h2>
+  <h2>应用</h2>
 </template>
 
-<script setup lang="ts" name="Apply"></script>
+<script lang="ts"></script>
