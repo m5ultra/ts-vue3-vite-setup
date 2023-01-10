@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useLogin } from '@/store'
+import { useLogin, useStore } from '@/store'
 
 const head = computed(() => useLogin().infos.head)
 const name = computed(() => useLogin().infos.name)
