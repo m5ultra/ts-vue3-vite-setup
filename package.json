@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "vite --host",
     "build": "vue-tsc && vite build",
     "preview": "vite preview --host",
@@ -21,7 +22,7 @@
     "moment": "^2.29.4",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.2",
-    "vue": "^3.2.45",
+    "vue": "^3.3.7",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
